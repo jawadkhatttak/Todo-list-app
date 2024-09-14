@@ -1,0 +1,436 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+  }
+
+  .rock-salt-regular {
+    font-family: "Rock Salt", cursive;
+    font-weight: 300;
+    font-style: normal;
+  }
+
+  body {
+    background-image: url(3.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    font-family: Rock Salt, sans-serif;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: scale(0.9);
+    }
+
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  @keyframes fadeOut {
+    from {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    to {
+      opacity: 0;
+      transform: scale(0.9);
+    }
+  }
+
+  .container {
+    color: white;
+    row-gap: 1rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .inputArea,
+  .todoList,
+  .completeList {
+    background-color: rgba(255, 255, 255, 0.041);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.37);
+    backdrop-filter: blur(2px);
+    padding-block: 0.2rem;
+    padding-inline: 0.8rem;
+    border-radius: 10px;
+    text-align: center;
+    border: 2px solid #584121;
+    transition: border-color 0.5s ease, box-shadow 0.5s ease;
+    animation: fadeIn 0.8s ease-in-out;
+    width: 17rem;
+    transition: scale 0.5s ease-in-out;
+    transition: border 0.5s ease-in-out;
+  }
+
+  .inputArea {
+    width: 35rem;
+  }
+
+  .todoList,
+  .completeList {
+    text-align: start;
+    height: 20rem;
+    overflow: auto;
+  }
+
+  .lists {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+  }
+
+  .inputArea:hover,
+  .todoList:hover,
+  .completeList:hover {
+    border-color: white;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.37);
+    scale: 1.01;
+    backdrop-filter: blur(0px);
+  }
+
+  #write,
+  #category {
+    background-color: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.37);
+    backdrop-filter: blur(8px);
+    border-radius: 6px;
+    padding: 0.4rem;
+    border: 2px solid #fff;
+    animation: fadeIn 0.8s ease-in-out;
+    width: 25rem;
+    transition: scale 0.8s;
+    color: rgb(0, 0, 0);
+    transition: border 0.5s ease-in-out;
+    font-family: "Rock Salt", cursive;
+    font-size: 0.7rem;
+    font-weight: 300;
+    letter-spacing: 0.08rem;
+    outline: none;
+  }
+
+  .gone {
+    animation: fadeOut 0.8s ease-in-out;
+  }
+
+  #write:focus,
+  #category:focus,
+  #write:hover,
+  #category:hover {
+    border-color: #584121;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.37);
+    background-color: transparent;
+    letter-spacing: 0.05rem;
+  }
+
+  #write::placeholder,
+  #category::placeholder {
+    color: #584121;
+    font-family: "Rock Salt", cursive;
+    font-size: 0.7rem;
+    font-weight: 700;
+  }
+
+  /* Change placeholder color on focus */
+  #write:focus::placeholder,
+  #category:focus::placeholder,
+  #write:hover::placeholder,
+  #category:hover::placeholder {
+    transition: color 0.5s ease-in-out;
+    font-weight: 300;
+
+    color: white;
+  }
+
+  button {
+    cursor: pointer;
+    background-color: transparent;
+    padding: 0.2rem;
+    padding-inline: 0.8rem;
+    border: 2px solid white;
+    color: #584121;
+    border-radius: 6px;
+    transition: border 0.5s ease-in-out;
+    transition: color 0.5s ease-in-out;
+    transition: scale 0.5s ease-in-out;
+    font-family: "Rock Salt", cursive;
+    font-weight: 700;
+  }
+
+  button:hover {
+    scale: 1.1;
+    color: white;
+    border-color: #8e423a;
+  }
+
+  ul {
+    display: grid;
+    gap: 0.3rem;
+  }
+
+  ul>li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding-inline: 0.5rem;
+    padding-block: 0.2rem;
+    gap: 1rem;
+    background-color: rgba(211, 194, 194, 0.1);
+    border-radius: 6px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    transition: border 0.5s ease-in-out, box-shadow 0.5s ease-in-out;
+    animation: fadeIn 0.5s ease-in-out;
+  }
+
+  .contain {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  span {
+    font-size: 0.8rem;
+  }
+
+  .tick,
+  .trash,
+  .pencil {
+    cursor: pointer;
+    font-size: 1.1rem;
+    color: #584121;
+    transition: color 0.3s, transform 0.3s;
+  }
+
+  .pencil:hover {
+    color: #2980b9;
+    transform: scale(1.1);
+  }
+
+  .tick:hover {
+    color: #2ecc71;
+    transform: scale(1.1);
+  }
+
+  .trash:hover {
+    color: #c03121;
+    transform: scale(1.1);
+  }
+
+  /* Scrollbar customization */
+  ::-webkit-scrollbar {
+    width: 0.5rem;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #584121c4;
+    border-radius: 10px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #584121;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.288);
+    border-radius: 10px;
+  }
+
+  .inputs {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding-bottom: 1rem;
+  }
+
+  span {
+    font-size: 0.78rem;
+  }
+
+  h1 {
+    text-align: center;
+    font-size: 2rem;
+    animation: fadeIn 0.8s ease-in-out;
+  }
+
+  h2 {
+    text-align: center;
+    animation: fadeIn 0.8s ease-in-out;
+  }
+
+  h3 {
+    padding-bottom: 0.4rem;
+  }
+
+  .modal {
+    position: fixed;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+    background-color: rgba(255, 255, 255, 0.041);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.37);
+    backdrop-filter: blur(8px);
+    padding: 2rem;
+    border-radius: 10px;
+    border: 2px solid #584121;
+    display: none;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+    justify-content: center;
+    font-family: "Rock Salt", cursive;
+    color: white;
+    z-index: 1000;
+    transition: border 0.5s ease-in-out;
+    transition: scale 0.5s ease-in-out;
+  }
+
+  .modal:hover {
+    border-color: white;
+    scale: 1.01;
+  }
+
+  .modal input {
+    padding: 0.5rem;
+    border: 2px solid white;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 6px;
+    font-family: "Rock Salt", cursive;
+    color: black;
+    width: 90%;
+    outline: none;
+    transition: all 0.5s ease-in-out;
+  }
+
+  .modal>input:hover {
+    scale: 1.01;
+    color: white;
+    border-color: #8e423a;
+  }
+
+  .modal>input::placeholder {
+    color: #584121;
+    font-family: "Rock Salt", cursive;
+    font-size: 0.7rem;
+    font-weight: 700;
+  }
+
+  .modal button {
+    background-color: transparent;
+    padding: 0.5rem 1rem;
+    border: 2px solid white;
+    color: #584121;
+    border-radius: 6px;
+    transition: all 0.5s;
+  }
+
+  .modal button:hover {
+    scale: 01.1;
+    color: white;
+    border-color: #8e423a;
+  }
+
+  .modal-active {
+    display: flex;
+  }
+
+  .modal1 {
+    position: fixed;
+    transform: translate(-50%, -50%);
+    left: 50%;
+    top: 50%;
+    backdrop-filter: blur(8px);
+    z-index: 1000;
+    background-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.37);
+    border-radius: 10px;
+    padding: 1rem;
+    border: 2px solid #584121;
+    width: 20rem;
+    transition: border 0.5s ease-in-out;
+    transition: scale 0.5s ease-in-out;
+    color: white;
+    text-align: center;
+  }
+
+  .modal1:hover {
+    border-color: white;
+    scale: 1.01;
+  }
+
+  .modal1>div>p {
+    color: #584121;
+    font-weight: 600;
+  }
+
+  .hidden {
+    display: none;
+  }
+
+  button#closeMissingFieldsModal {
+    margin-top: 1rem;
+    cursor: pointer;
+    background-color: transparent;
+    padding: 0.5rem 1rem;
+    border: 2px solid white;
+    color: #584121;
+    border-radius: 6px;
+    transition: border 0.5s ease-in-out;
+  }
+
+  button#closeMissingFieldsModal:hover {
+    scale: 1.05;
+    color: white;
+    border-color: #8e423a;
+  }
+
+  @media (max-width: 603px) {
+    .inputArea {
+      width: 23rem;
+    }
+
+    .todoList,
+    .completeList {
+      width: 11rem;
+    }
+
+    #write,
+    #category {
+      width: 19rem;
+    }
+
+    h1 {
+      font-size: 1.3rem;
+    }
+
+    h2 {
+      font-size: 0.9rem;
+    }
+
+    h3 {
+      font-size: 0.8rem;
+    }
+
+    span {
+      font-size: 0.7rem;
+    }
+
+    #write::placeholder,
+    #category::placeholder {
+      font-size: 0.55rem;
+    }
+  }
